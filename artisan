@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+<?php
+
+// =====================================================================
+// artisan = vstupní bod pro příkazy v terminálu.
+// Spouští se: php artisan <příkaz>
+// Např.: php artisan serve (spustí web), php artisan migrate --seed
+// (vytvoří tabulky a naplní je), php artisan test (spustí testy).
+// =====================================================================
+
+// "use" = zkratky, abychom níže nemuseli psát celé názvy tříd
+use Illuminate\Foundation\Application;          // hlavní třída Laravelu
+use Symfony\Component\Console\Input\ArgvInput;  // přečte argumenty z příkazové řádky
+
+// Uložíme si čas spuštění (Laravel ho může použít k měření doby běhu)
+define('LARAVEL_START', microtime(true));
+
+// Composer autoloader: PHP si díky němu samo najde soubory tříd,
+// takže nikde nemusíme ručně psát require pro každou třídu
+require __DIR__.'/vendor/autoload.php';
+
+// Načteme poskládanou aplikaci ze souboru bootstrap/app.php
+/** @var Application $app */
+$app = require_once __DIR__.'/bootstrap/app.php';
+
+// Aplikace dostane argumenty (např. "migrate") a příkaz provede.
+// $status = výsledek: 0 znamená úspěch, jiné číslo chybu.
+$status = $app->handleCommand(new ArgvInput);
+
+// Ukončíme skript a terminálu vrátíme výsledek
+exit($status);

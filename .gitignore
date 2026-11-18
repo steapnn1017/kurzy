@@ -1,0 +1,23 @@
+# ======================================================================
+# .gitignore = seznam souborů a složek, které git NEMÁ ukládat.
+# ======================================================================
+
+# Knihovny z Composeru (Laravel atd.). Jsou velké a kdokoli si je
+# znovu stáhne příkazem `composer install` podle composer.lock.
+/vendor
+
+# Nastavení konkrétního počítače včetně tajného klíče APP_KEY
+.env
+
+# Soubor SQLite databáze (vytvoří a naplní ho `composer setup`)
+/database/*.sqlite*
+
+# Záznam chyb aplikace (Laravel si složku logs vytvoří sám, když je potřeba)
+/storage/logs
+
+# Mezivýsledky PHPUnitu po spuštění testů
+/.phpunit.cache
+.phpunit.result.cache
+
+# Skryté systémové soubory macOS
+.DS_Store

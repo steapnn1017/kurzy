@@ -1,0 +1,7 @@
+# Sem Laravel ukládá šablony Blade "přeložené" do čistého PHP
+# (zrychlení, aby se nemusely překládat při každém požadavku).
+# Složka musí existovat, obsah do gitu nepatří.
+# Ignoruj všechno...
+*
+# ...kromě tohoto souboru (aby se složka uložila do gitu)
+!.gitignore

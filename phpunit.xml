@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================
+     phpunit.xml = nastavení automatických testů.
+     Testy spustíte příkazem: php artisan test
+     ==================================================================== -->
+
+<!-- bootstrap: před testy se načte Composer autoloader (najde třídy),
+     colors: barevný výstup v terminálu (zelená = prošlo, červená = chyba) -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <!-- Kde testy jsou: všechny soubory *Test.php ve složce tests -->
+    <testsuites>
+        <testsuite name="Kurzy">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <!-- Proměnné prostředí JEN pro testy. Přepíšou hodnoty ze souboru .env. -->
+    <php>
+        <!-- testing = Laravel ví, že běží testy (mimo jiné vypne kontrolu CSRF tokenu) -->
+        <env name="APP_ENV" value="testing"/>
+        <!-- Databáze v paměti RAM: každý test začíná s prázdnou databází
+             a skutečná data v database/database.sqlite zůstanou netknutá -->
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/>
+        <!-- Session jen v paměti (žádné cookies) -->
+        <env name="SESSION_DRIVER" value="array"/>
+    </php>
+</phpunit>

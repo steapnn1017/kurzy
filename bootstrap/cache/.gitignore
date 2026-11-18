@@ -1,0 +1,7 @@
+# Složka pro soubory, které si Laravel vygeneruje sám (seznam balíčků,
+# zrychlená konfigurace). Musí existovat, ale její obsah do gitu nepatří.
+# Git neumí uložit prázdnou složku, proto je v ní tento soubor.
+# Řádek níže: ignoruj všechno...
+*
+# ...kromě tohoto souboru
+!.gitignore
